@@ -13,10 +13,22 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float speed = 0.01f;
+        float speed = 1.01f;
         if (Input.GetKey(KeyCode.W))
         {
-
+            transform.Translate(0.0f, 0.0f, speed);
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            transform.Translate(-speed, 0.0f, 0.0f);
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            transform.Translate(0.0f, 0.0f, -speed);
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            transform.Translate(speed, 0.0f, 0.0f);
         }
     }
 }
