@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
+    string objTag = "";
+    //prefab‚ÌŽæ“¾
+    public GameObject particlePrefab;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,7 +18,21 @@ public class BulletController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float speed = 1.0f;
+        float speed = 0.5f;
         transform.Translate(0.0f, 0.0f, speed);
+
+        //“–‚½‚è”»’è
+        if(objTag == "enemy")
+        {
+            GameObject particle = Instantiate(particlePrefab) as GameObject;
+            particle.transform.position = transform.position;
+
+            Destroy(gameObject);
+        }
+    }
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        objTag=other.gameObject.tag;
     }
 }

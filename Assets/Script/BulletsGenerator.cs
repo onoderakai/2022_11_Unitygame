@@ -25,7 +25,7 @@ public class BulletsGenerator : MonoBehaviour
             Vector3 pos = player.transform.position;
 
             GameObject Shot = Instantiate(bulletPrefab) as GameObject;
-            Shot.transform.position = new Vector3(pos.x, pos.y + 13.27f, pos.z + 4.0f);
+            Shot.transform.position = new Vector3(pos.x - 0.15f, pos.y + 13.27f, pos.z + 4.0f);
         }
         if(bulletsCoolTime > 0)
         {
