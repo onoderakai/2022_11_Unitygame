@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     string objTag = "";
+    
 
     // Start is called before the first frame update
     void Start()

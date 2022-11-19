@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PRotated : MonoBehaviour
 {
-    Rigidbody rigid;
     //スクリプトの取得
     GameObject mainCameraObj;
     CameraController cameraControllerSc;
+    //回転速度
+    float rotateSpeed = 2f;
 
     // Start is called before the first frame update
     void Start()
     {
-        this.rigid = GetComponent<Rigidbody>();
         //スクリプトの取得
         mainCameraObj = GameObject.Find("Main Camera");
         cameraControllerSc = mainCameraObj.GetComponent<CameraController>();
@@ -23,23 +23,16 @@ public class PlayerController : MonoBehaviour
     {
         if (!cameraControllerSc.playerEnemyHit)
         {
-            float speed = 0.3f;
-            if (Input.GetKey(KeyCode.W))
+            if (Input.GetKey(KeyCode.RightArrow))
             {
-                transform.Translate(0.0f, 0.0f, speed);
+                transform.Rotate(0, rotateSpeed, 0);
             }
-            if (Input.GetKey(KeyCode.A))
+            if (Input.GetKey(KeyCode.LeftArrow))
             {
-                transform.Translate(-speed, 0.0f, 0.0f);
+                transform.Rotate(0, -rotateSpeed, 0);
             }
-            if (Input.GetKey(KeyCode.S))
-            {
-                transform.Translate(0.0f, 0.0f, -speed);
-            }
-            if (Input.GetKey(KeyCode.D))
-            {
-                transform.Translate(speed, 0.0f, 0.0f);
-            }
+
         }
+
     }
 }
