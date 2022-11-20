@@ -27,7 +27,7 @@ public class SelectText : MonoBehaviour
         if (failedSc.isFailedText)
         {
             count++;
-            if(count >= 10)
+            if(count >= 15)
             {
                 count = 0;
                 if (!selectText.enabled)

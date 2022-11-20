@@ -26,7 +26,8 @@ public class PCollision : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(objTag == "enemy")
+        if(objTag == "enemy" ||
+            objTag == "enemyBullet")
         {
             GameObject particle = Instantiate(particlePrefab) as GameObject;
             particle.transform.position = playerEmpty.transform.position;

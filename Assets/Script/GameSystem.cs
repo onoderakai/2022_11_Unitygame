@@ -20,6 +20,6 @@ public class GameSystem : MonoBehaviour
     //ボタンを押したらシーン遷移
     public void StartGame()
     {
-        SceneManager.LoadScene("StageScene");
+        SceneManager.LoadScene("ExplainScene");
     }
 }

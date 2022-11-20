@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 5364392250540314180}
   - component: {fileID: 5364392250540314177}
   - component: {fileID: 3594816276734014954}
+  - component: {fileID: -4120111918267182590}
   m_Layer: 0
   m_Name: enemy_plane
   m_TagString: enemy
@@ -256,3 +257,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-4120111918267182590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5094503036990864930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 379164b709b46ee4fa48c169e009a6fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyBulletPrefab: {fileID: 8397124263043681493, guid: 5c83aa0cb2ac6d74a83a4258868426a6, type: 3}
