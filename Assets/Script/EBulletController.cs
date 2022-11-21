@@ -10,6 +10,8 @@ public class EBulletController : MonoBehaviour
     GameObject player;
     //’e‚Ì‘¬“x
     float speed = 70.0f;
+    private int count = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,17 +28,30 @@ public class EBulletController : MonoBehaviour
     {
         //ˆÚ“®ˆ—
         rb.velocity = transform.forward * -speed;
-        //Á‚·ˆ—
-        int destroyDis = 200;
-        Vector3 dis = player.transform.position - transform.position;
-        if (dis.x > destroyDis ||
-            dis.y > destroyDis ||
-            dis.z > destroyDis ||
-            dis.x < -destroyDis ||
-            dis.y < -destroyDis ||
-            dis.z < -destroyDis)
+
+        if (player != null)
         {
-            Destroy(gameObject);
+            //Á‚·ˆ—
+            int destroyDis = 200;
+            Vector3 dis = player.transform.position - transform.position;
+            if (dis.x > destroyDis ||
+                dis.y > destroyDis ||
+                dis.z > destroyDis ||
+                dis.x < -destroyDis ||
+                dis.y < -destroyDis ||
+                dis.z < -destroyDis)
+            {
+                Destroy(gameObject);
+            }
         }
+    }
+
+    public void SetPlayer(GameObject obj)
+    {
+        this.player = obj;
+    }
+
+    public int GetCount() {
+        return count;
     }
 }
