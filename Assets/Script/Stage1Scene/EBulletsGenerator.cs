@@ -40,7 +40,6 @@ public class EBulletsGenerator : MonoBehaviour
                 Vector3 instantiatePos = new Vector3(transform.position.x, transform.position.y + 13.0f, transform.position.z);
                 bullet.transform.position = instantiatePos;
                 bullet.transform.rotation = transform.rotation;
-                //bullet.GetComponent<EBulletController>().SetPlayer(GameObject.Find("player"));
                 if(bulletCount > 5)
                 {
                     bulletCount = 0;

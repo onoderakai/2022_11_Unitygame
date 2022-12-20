@@ -18,14 +18,7 @@ public class BulletsGenerator : MonoBehaviour
 
     int bulletsCoolTime = 0;
 
-    float rotatedX = 0f;
-    float rotatedY = 0f;
-    float rotatedZ = 1f;
-
-    public float pRotatedX = 1f;
-    public float pRotatedY = 1f;
-    public float pRotatedZ = 1f;
-
+   
     //音関連
     public AudioClip shotSe;
     public AudioClip nothingShotSe;
@@ -57,17 +50,6 @@ public class BulletsGenerator : MonoBehaviour
                     //音を鳴らす
                     shotSource.PlayOneShot(shotSe);
 
-                    //打ち直しするごとに角度が変わる
-                    Vector3 rotated = new Vector3(rotatedX, rotatedY, rotatedZ);
-                    //角度
-                    rotated = this.player.transform.rotation * rotated;
-                    //パブリックの角度
-                    pRotatedX = rotated.x;
-                    pRotatedY = rotated.y;
-                    pRotatedZ = rotated.z;
-                    //ここまで
-
-
                     bulletsCoolTime = 20;
                     Vector3 pos = player.transform.localPosition;
 
@@ -83,6 +65,7 @@ public class BulletsGenerator : MonoBehaviour
                 }
 
             }
+            //リロードフラグ
             if (Input.GetKeyDown(KeyCode.R) && !reloadFlag)
             {
                 reloadFlag = true;
@@ -92,6 +75,7 @@ public class BulletsGenerator : MonoBehaviour
             {
                 reloadFlag = false;
             }
+            //リロード処理
             if (remainingBullets < maxRemainingBullets && reloadFlag)
             {
                 reloadTime++;

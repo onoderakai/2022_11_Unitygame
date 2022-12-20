@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class BulletController : MonoBehaviour
 {
     //コンポーネントの取得
@@ -11,13 +12,13 @@ public class BulletController : MonoBehaviour
 
     //弾の速度
     float speed = 70.0f;
-    
+
     // Start is called before the first frame update
     void Start()
     {
         //コンポーネントの取得
         rb = GetComponent<Rigidbody>();
-
+        
         
         //オブジェクトの取得
         this.player = GameObject.Find("player");

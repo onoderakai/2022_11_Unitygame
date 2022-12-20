@@ -35,8 +35,6 @@ public class EnemyController : MonoBehaviour
         }
         
         move.x = speed;
-        //move.z = Random.Range(-speed, speed);
-        Debug.Log(speed);
         transform.Translate(move);
 
         if(objTag == "bullet")

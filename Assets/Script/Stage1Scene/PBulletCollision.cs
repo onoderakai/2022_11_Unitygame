@@ -29,6 +29,10 @@ public class PBulletCollision : MonoBehaviour
             cameraController.bulletEnemyHit = true;
             Destroy(gameObject);
         }
+        else if (objTag == "Terrain")
+        {
+            Destroy(gameObject);
+        }
     }
     private void OnTriggerEnter(Collider other)
     {

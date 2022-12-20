@@ -19,7 +19,8 @@ public class EBulletCollision : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(objTag == "Player")
+        if(objTag == "Player" ||
+            objTag == "Terrain")
         {
             Destroy(gameObject);
         }

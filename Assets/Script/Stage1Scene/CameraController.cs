@@ -64,7 +64,7 @@ public class CameraController : MonoBehaviour
             isPlayerEnemyHit = true;
             pHitVibrationRange = maxDamageVibration;
         }
-
+        //敵に弾が当たった時のシェイク
         if (vibrationTime > 0)
         {
             vibrationTime--;
@@ -91,7 +91,8 @@ public class CameraController : MonoBehaviour
                 transform.localPosition = pos;
             }
         }
-        else if (pHitVibrationTime > 0 && playerEnemyHit)
+        //プレイヤーに弾が当たった時のシェイク
+        if (pHitVibrationTime > 0 && playerEnemyHit)
         {
             count++;
             pHitVibrationTime--;
