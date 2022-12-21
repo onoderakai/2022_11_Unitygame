@@ -7,7 +7,8 @@ public class SceneChangeSc : MonoBehaviour
 {
     GameObject sceneChangeBg;
     //
-    [SerializeField] private bool easeFlag = false;
+    [SerializeField] bool easeFlag = false;
+    bool easeComplete = false;
     Color color;
 
     // Start is called before the first frame update
@@ -22,17 +23,41 @@ public class SceneChangeSc : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (easeFlag)
+        if (easeFlag && !easeComplete)
         {
-            color.a += 0.01f;
+            color.a += 0.05f;
             gameObject.GetComponent<Image>().color = color;
-            Debug.Log(color.a);
+            if (color.a > 1)
+            {
+                color.a = 1;
+                easeComplete = true;
+            }
         }
-        
+        else if (easeFlag && easeComplete)
+        {
+            color.a -= 0.01f;
+            gameObject.GetComponent<Image>().color = color;
+            if (color.a <= 0)
+            {
+                color.a = 0;
+                easeComplete = false;
+                easeFlag = false;
+
+            }
+        }
+
     }
 
     public void SetEaseFlag(bool flag)
     {
         easeFlag = flag;
+    }
+    public void SetEaseComplete(bool flag)
+    {
+        easeComplete = flag;
+    }
+    public bool GetEaseComplete()
+    {
+        return easeComplete;
     }
 }

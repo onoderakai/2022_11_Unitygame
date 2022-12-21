@@ -9,6 +9,7 @@ public class TerrainCollision : MonoBehaviour
     bool initializeFlag = false;
 
     //ƒvƒŒƒnƒu‚ÌŽæ“¾
+    [SerializeField] GameObject terrainHitFireParticle;
     [SerializeField] GameObject terrainHitParticle;
 
     // Start is called before the first frame update
@@ -23,7 +24,9 @@ public class TerrainCollision : MonoBehaviour
         if(objTag != null && initializeFlag)
         {
             initializeFlag = false;
+            GameObject terrainFireParticle = Instantiate(terrainHitFireParticle) as GameObject;
             GameObject terrainParticle = Instantiate(terrainHitParticle) as GameObject;
+            terrainFireParticle.transform.position = hitPos;
             terrainParticle.transform.position = hitPos;
         }
     }

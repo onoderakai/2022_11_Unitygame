@@ -14,13 +14,12 @@ public class SceneSystem : MonoBehaviour
         //スクリプトの取得
         failedObj = GameObject.Find("failedText");
         failedSc = failedObj.GetComponent<FailedController>();
-        Debug.Log("Startが呼ばれた");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (failedSc.isFailedText)
+        if (failedSc.GetIsFailedText())
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {

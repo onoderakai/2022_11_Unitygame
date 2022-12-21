@@ -61,14 +61,27 @@ public class PCollision : MonoBehaviour
                     Destroy(gameObject);
 
                 }
+                else
+                {
+                    cameraControllerSc.bulletEnemyHit = true;
+                }
                 //âŒÇ™èoÇÈ
                 GameObject damageParticle = Instantiate(damageParticlePrefab) as GameObject;
                 damageParticle.transform.position = hitPos;
-                damageParticle.transform.parent = playerEmpty.transform;
-                
+                damageParticle.transform.parent = gameObject.transform;
+
+            }
+            if (objTag == "Terrain")
+            {
+                hp--;
+                hpManagerSc.SetHpCount(0);
+                GameObject particle = Instantiate(particlePrefab) as GameObject;
+                particle.transform.position = playerEmpty.transform.position;
+                cameraControllerSc.playerEnemyHit = true;
+                Destroy(gameObject);
             }
         }
-        
+
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -76,4 +89,10 @@ public class PCollision : MonoBehaviour
         isHit = true;
         hitPos = other.ClosestPointOnBounds(this.transform.position);
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        objTag = collision.gameObject.tag;
+        isHit = true;
+    }
+
 }

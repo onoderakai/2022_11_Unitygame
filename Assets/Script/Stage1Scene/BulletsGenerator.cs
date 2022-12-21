@@ -7,6 +7,8 @@ public class BulletsGenerator : MonoBehaviour
     //ゲームオブジェクトを取得
     GameObject player;
     public GameObject bulletPrefab;
+
+    [SerializeField] GameObject reloadParticle;
     //スクリプトの取得
     GameObject mainCameraObj;
     CameraController cameraControllerSc;
@@ -20,8 +22,9 @@ public class BulletsGenerator : MonoBehaviour
 
    
     //音関連
-    public AudioClip shotSe;
-    public AudioClip nothingShotSe;
+    [SerializeField] AudioClip shotSe;
+    [SerializeField] AudioClip nothingShotSe;
+    [SerializeField] AudioClip reloadSe;
     AudioSource shotSource;
 
 
@@ -69,11 +72,13 @@ public class BulletsGenerator : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.R) && !reloadFlag)
             {
                 reloadFlag = true;
+                reloadParticle.SetActive(true);
 
             }
             else if (Input.GetKeyDown(KeyCode.R))
             {
                 reloadFlag = false;
+                reloadParticle.SetActive(false);
             }
             //リロード処理
             if (remainingBullets < maxRemainingBullets && reloadFlag)
@@ -83,11 +88,15 @@ public class BulletsGenerator : MonoBehaviour
                 {
                     reloadTime = 0;
                     remainingBullets++;
+                    //音を鳴らす
+                    shotSource.PlayOneShot(reloadSe);
                 }
+                
             }
             else if(remainingBullets >= maxRemainingBullets)
             {
                 reloadFlag = false;
+                reloadParticle.SetActive(false);
             }
             if (bulletsCoolTime > 0)
             {

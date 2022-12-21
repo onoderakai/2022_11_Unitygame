@@ -14,7 +14,7 @@ public class FailedController : MonoBehaviour
     float t = 0.0f;
     float easeT = 0.0f;
     //’Ê‚Á‚½ƒtƒ‰ƒO
-    public bool isFailedText = false;
+    bool isFailedText = false;
 
     // Start is called before the first frame update
     void Start()
@@ -49,5 +49,9 @@ public class FailedController : MonoBehaviour
         {
             failedText.enabled = false;
         }
+    }
+    public bool GetIsFailedText()
+    {
+        return isFailedText;
     }
 }

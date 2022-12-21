@@ -24,7 +24,7 @@ public class SelectText : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (failedSc.isFailedText)
+        if (failedSc.GetIsFailedText())
         {
             count++;
             if(count >= 15)

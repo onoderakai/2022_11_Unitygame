@@ -50,13 +50,46 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //弾が敵に当たったら
-        if (bulletEnemyHit)
+        //小さいシェイク
+        if (!playerEnemyHit)
         {
-            vibrationTime = maxVibrationTime;
-            bulletEnemyHit = false;
-            vibrationRange = maxVibration;
+            //弾が敵に当たったら
+            if (bulletEnemyHit)
+            {
+                vibrationTime = maxVibrationTime;
+                bulletEnemyHit = false;
+                vibrationRange = maxVibration;
+            }
+            //敵に弾が当たった時のシェイク
+            if (vibrationTime > 0)
+            {
+                vibrationTime--;
+
+                vibration.x = Random.Range(-vibrationRange.x, vibrationRange.x);
+                vibration.y = Random.Range(-vibrationRange.y, vibrationRange.y);
+                //カメラ位置を戻す
+                transform.localPosition = pos;
+                //カメラ位置をシェイク
+                transform.Translate(vibration.x, vibration.y, 0.0f);
+
+                if (vibrationRange.x > 0)
+                {
+                    vibrationRange.x -= 0.1f;
+                }
+                if (vibrationRange.y > 0)
+                {
+                    vibrationRange.y -= 0.1f;
+                }
+                //揺れ幅がゼロになったら
+                else
+                {
+                    //カメラ位置を戻す
+                    transform.localPosition = pos;
+                }
+            }
         }
+       
+        
         //プレイヤーが敵に当たったら
         if (playerEnemyHit && !isPlayerEnemyHit)
         {
@@ -64,33 +97,7 @@ public class CameraController : MonoBehaviour
             isPlayerEnemyHit = true;
             pHitVibrationRange = maxDamageVibration;
         }
-        //敵に弾が当たった時のシェイク
-        if (vibrationTime > 0)
-        {
-            vibrationTime--;
-
-            vibration.x = Random.Range(-vibrationRange.x, vibrationRange.x);
-            vibration.y = Random.Range(-vibrationRange.y, vibrationRange.y);
-            //カメラ位置を戻す
-            transform.localPosition = pos;
-            //カメラ位置をシェイク
-            transform.Translate(vibration.x, vibration.y, 0.0f);
-
-            if (vibrationRange.x > 0)
-            {
-                vibrationRange.x -= 0.1f;
-            }
-            if (vibrationRange.y > 0)
-            {
-                vibrationRange.y -= 0.1f;
-            }
-            //揺れ幅がゼロになったら
-            else
-            {
-                //カメラ位置を戻す
-                transform.localPosition = pos;
-            }
-        }
+        
         //プレイヤーに弾が当たった時のシェイク
         if (pHitVibrationTime > 0 && playerEnemyHit)
         {

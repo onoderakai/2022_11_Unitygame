@@ -9,6 +9,7 @@ public class HpManager : MonoBehaviour
     [SerializeField]
     GameObject[] hpObj=new GameObject[maxHp];
     private int hpCount = maxHp;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +25,7 @@ public class HpManager : MonoBehaviour
             for (int i = 0; i < maxHp - hpCount; i++)
             {
                 hpObj[i].SetActive(false);
+                
             }
         }
     }
