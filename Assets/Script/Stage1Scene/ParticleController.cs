@@ -7,9 +7,11 @@ public class ParticleController : MonoBehaviour
     int time = 0;
     int destroyTime = 600;
     //コンポーネントの取得
-    public AudioClip defeatSe;
+    [SerializeField] AudioClip defeatSe;
+    [SerializeField] AudioClip bulletHitSource;
     AudioSource defeatSource;
     bool isSe = false;
+    int soundType = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -24,13 +26,25 @@ public class ParticleController : MonoBehaviour
         if (!isSe)
         {
             isSe = true;
-            //SEを鳴らす
-            defeatSource.PlayOneShot(defeatSe);
+            if(soundType == 0)
+            {
+                //SEを鳴らす
+                defeatSource.PlayOneShot(defeatSe);
+            }
+            else if(soundType == 1)
+            {
+                //SEを鳴らす
+                defeatSource.PlayOneShot(bulletHitSource);
+            }
         }
         time++;
         if (time > destroyTime)
         {
             Destroy(gameObject);
         }
+    }
+    public void SetSoundType(int soundType)
+    {
+        this.soundType = soundType;
     }
 }

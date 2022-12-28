@@ -72,6 +72,7 @@ public class BulletsGenerator : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.R) && !reloadFlag)
             {
                 reloadFlag = true;
+                reloadTime = 0;
                 reloadParticle.SetActive(true);
 
             }
@@ -84,7 +85,7 @@ public class BulletsGenerator : MonoBehaviour
             if (remainingBullets < maxRemainingBullets && reloadFlag)
             {
                 reloadTime++;
-                if (reloadTime > 45)
+                if (reloadTime > 30)
                 {
                     reloadTime = 0;
                     remainingBullets++;

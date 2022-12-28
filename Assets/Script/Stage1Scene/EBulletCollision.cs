@@ -20,7 +20,8 @@ public class EBulletCollision : MonoBehaviour
     void Update()
     {
         if(objTag == "Player" ||
-            objTag == "Terrain")
+            objTag == "Terrain" ||
+            objTag == "bullet")
         {
             Destroy(gameObject);
         }

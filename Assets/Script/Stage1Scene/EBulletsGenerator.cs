@@ -12,6 +12,9 @@ public class EBulletsGenerator : MonoBehaviour
     int count = 0;
     int bulletCount = 0;
     int coolTime = 0;
+
+    int atackType = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,7 +35,7 @@ public class EBulletsGenerator : MonoBehaviour
             {
                 coolTime--;
             }
-            if (count >= 5 && coolTime <= 0)
+            if (count >= 5 && coolTime <= 0 && atackType >= 0 && atackType < 4)
             {
                 bulletCount++;
                 count = 0;
@@ -40,11 +43,25 @@ public class EBulletsGenerator : MonoBehaviour
                 Vector3 instantiatePos = new Vector3(transform.position.x, transform.position.y + 13.0f, transform.position.z);
                 bullet.transform.position = instantiatePos;
                 bullet.transform.rotation = transform.rotation;
+                bullet.GetComponent<EBulletController>().SetAtackType(atackType);
                 if(bulletCount > 5)
                 {
+                    int maxAtackType = 5;
+                    atackType = Random.Range(0, maxAtackType) % maxAtackType;
                     bulletCount = 0;
                     coolTime = 45;
                 }
+            }
+            else if(coolTime <= 0 && atackType >= 4)
+            {
+                count = 0;
+                GameObject bullet = Instantiate(enemyBulletPrefab) as GameObject;
+                Vector3 instantiatePos = new Vector3(transform.position.x, transform.position.y + 13.0f, transform.position.z);
+                bullet.transform.position = instantiatePos;
+                bullet.transform.rotation = transform.rotation;
+                bullet.GetComponent<EBulletController>().SetAtackType(atackType);
+                coolTime = 45;
+                atackType = Random.Range(0, 4) % 4;
             }
         }
     }

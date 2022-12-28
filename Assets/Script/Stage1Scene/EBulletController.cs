@@ -11,6 +11,13 @@ public class EBulletController : MonoBehaviour
     //íeÇÃë¨ìx
     float speed = 70.0f;
     private int count = 0;
+    float theta = 0.1f;
+    //çUåÇÇÃéÌóﬁ
+    int atackType = 0;
+
+    //âÒì]ÇÃëÂÇ´Ç≥
+    float circleSize = 0.0f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -27,9 +34,46 @@ public class EBulletController : MonoBehaviour
     void Update()
     {
         //à⁄ìÆèàóù
-        rb.velocity = transform.forward * -speed;
+        if (atackType == 0)
+        {
+            rb.velocity = transform.forward * -speed;
+            transform.Translate(Mathf.Cos(theta) * circleSize, Mathf.Sin(theta) * circleSize, 0);
+            theta += 0.1f;
+            circleSize += 0.01f;
+        }
+        if (atackType == 1)
+        {
+            rb.velocity = transform.forward * -speed;
+            transform.Translate(Mathf.Cos(theta) * circleSize, Mathf.Sin(theta) * circleSize, 0);
+            theta -= 0.1f;
+            circleSize += 0.01f;
+        }
+        else if(atackType == 2)
+        {
+            rb.velocity = transform.forward * -speed;
+            transform.Translate(Mathf.Cos(theta) * circleSize, 0, 0);
+            theta += 0.1f;
+            circleSize += 0.01f;
+        }
+        else if (atackType == 3)
+        {
+            rb.velocity = transform.forward * -speed;
+            transform.Translate(Mathf.Cos(theta) * circleSize, 0, 0);
+            theta -= 0.1f;
+            circleSize += 0.01f;
+        }
+        else if (atackType == 4)
+        {
+            rb.velocity = transform.forward * -speed * 10;
+            Vector3 size = transform.localScale;
+            if(size.z < 500.0f)
+            {
+                size.z += speed;
+            }
+            transform.localScale = size;
+        }
 
-        if (player != null)
+            if (player != null)
         {
             //è¡Ç∑èàóù
             int destroyDis = 200;
@@ -49,6 +93,10 @@ public class EBulletController : MonoBehaviour
     public void SetPlayer(GameObject obj)
     {
         this.player = obj;
+    }
+    public void SetAtackType(int atackType)
+    {
+        this.atackType = atackType;
     }
 
     public int GetCount() {
