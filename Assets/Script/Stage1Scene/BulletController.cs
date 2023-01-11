@@ -11,7 +11,7 @@ public class BulletController : MonoBehaviour
     GameObject player;
 
     //弾の速度
-    float speed = 70.0f;
+    float speed = 140.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +21,7 @@ public class BulletController : MonoBehaviour
         
         
         //オブジェクトの取得
-        this.player = GameObject.Find("player");
+        this.player = GameObject.Find("playerEmpty");
     }
 
     // Update is called once per frame

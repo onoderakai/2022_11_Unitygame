@@ -42,7 +42,7 @@ public class BulletsGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!cameraControllerSc.playerEnemyHit)
+        if (!cameraControllerSc.playerEnemyHit && player != null)
         {
             if (Input.GetKey(KeyCode.Space) && bulletsCoolTime <= 0 && !reloadFlag)
             {

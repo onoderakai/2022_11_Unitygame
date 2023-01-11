@@ -8,7 +8,7 @@ public class EBulletsGenerator : MonoBehaviour
     GameObject mainCameraObj;
     CameraController mainCameraSc;
 
-    public GameObject enemyBulletPrefab;
+    [SerializeField] GameObject enemyBulletPrefab;
     int count = 0;
     int bulletCount = 0;
     int coolTime = 0;
@@ -43,6 +43,9 @@ public class EBulletsGenerator : MonoBehaviour
                 Vector3 instantiatePos = new Vector3(transform.position.x, transform.position.y + 13.0f, transform.position.z);
                 bullet.transform.position = instantiatePos;
                 bullet.transform.rotation = transform.rotation;
+                //enemyBulletPrefab.GetComponentInChildren<MeshRenderer>().material.color = Color.white;
+                //bullet.GetComponent<EBulletController>().child.GetComponent<Material>().color = Color.white;
+
                 bullet.GetComponent<EBulletController>().SetAtackType(atackType);
                 if(bulletCount > 5)
                 {

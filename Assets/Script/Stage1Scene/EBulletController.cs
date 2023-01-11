@@ -18,7 +18,6 @@ public class EBulletController : MonoBehaviour
     //‰ñ“]‚Ì‘å‚«‚³
     float circleSize = 0.0f;
 
-
     // Start is called before the first frame update
     void Start()
     {

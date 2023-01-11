@@ -4828,6 +4828,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defeatSe: {fileID: 8300000, guid: 80a003f160a18ae4da72dd484322c4c0, type: 3}
+  bulletHitSource: {fileID: 0}
 --- !u!82 &-124307470492562913
 AudioSource:
   m_ObjectHideFlags: 0

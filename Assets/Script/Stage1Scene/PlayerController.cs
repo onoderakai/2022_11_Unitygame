@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                float speed = 0.3f;
+                float speed = 0.6f;
                 if (Input.GetKey(KeyCode.W))
                 {
                     transform.Translate(0.0f, 0.0f, speed);
